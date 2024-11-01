@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:searchbar_animation/searchbar_animation.dart';
 import 'package:flutter_masonry_view/flutter_masonry_view.dart';
 import 'package:bookofsaints/model/apifetchdata.dart';
+import 'package:bookofsaints/subpage/read.dart';
 
 class SaintList extends StatefulWidget {
   const SaintList({super.key});
@@ -102,7 +103,19 @@ class _SaintListState extends State<SaintList> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => SaintDetailPage(
+                                      saintName: item['name'],
+                                      saintImage: item['imageUrl'],
+                                      saintStory: item['story'], 
+                                      videoUrl: item['videoUrl'],
+                                    ),
+                                  ),
+                                );
+                              },
                               style: ElevatedButton.styleFrom(
                                 foregroundColor: Colors.white,
                                 backgroundColor:

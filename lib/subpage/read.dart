@@ -19,13 +19,16 @@ class SaintDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(saintName),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(saintImage),
+            Center(
+              child: Image.network(saintImage),
+            ),
             const SizedBox(height: 16.0),
             Text(
               saintName,
@@ -35,18 +38,20 @@ class SaintDetailPage extends StatelessWidget {
             const SizedBox(height: 8.0),
             Text(saintStory),
             const SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () {
-                // Handle video playback, e.g., using a video player plugin
-                // Example:
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) => VideoPlayerScreen(videoUrl: videoUrl),
-                //   ),
-                // );
-              },
-              child: const Text('Watch Now'),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  // Handle video playback, e.g., using a video player plugin
+                  // Example:
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) => VideoPlayerScreen(videoUrl: videoUrl),
+                  //   ),
+                  // );
+                },
+                child: const Text('Watch Now'),
+              ),
             ),
           ],
         ),

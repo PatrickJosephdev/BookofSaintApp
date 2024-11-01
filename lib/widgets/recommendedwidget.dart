@@ -21,7 +21,7 @@ class Recommended extends StatelessWidget {
       child: SizedBox(
         // Using SizedBox for better adaptability
         width: 200,
-        height: 100,
+        height: 200,
         child: Stack(
           // Using Stack to overlay elements
           children: [
