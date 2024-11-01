@@ -1,0 +1,256 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.bookofsaints"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="34" />
+9-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml
+10    <!--
+11         Required to query activities that can process text, see:
+12         https://developer.android.com/training/package-visibility and
+13         https://developer.android.com/reference/android/content/Intent#ACTION_PROCESS_TEXT.
+14
+15         In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin.
+16    -->
+17    <queries>
+17-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:39:5-44:15
+18        <intent>
+18-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:40:9-43:18
+19            <action android:name="android.intent.action.PROCESS_TEXT" />
+19-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:41:13-72
+19-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:41:21-70
+20
+21            <data android:mimeType="text/plain" />
+21-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:42:13-50
+21-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:42:19-48
+22        </intent>
+23        <intent>
+23-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:10:9-12:18
+24            <action android:name="android.support.customtabs.action.CustomTabsService" />
+24-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-90
+24-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:11:21-87
+25        </intent>
+26    </queries>
+27
+28    <permission
+28-->[androidx.core:core:1.13.1] /home/user/.gradle/caches/transforms-3/54a4cfbaad86b9ab2273ca8263e4a153/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+29        android:name="com.example.bookofsaints.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+29-->[androidx.core:core:1.13.1] /home/user/.gradle/caches/transforms-3/54a4cfbaad86b9ab2273ca8263e4a153/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+30        android:protectionLevel="signature" />
+30-->[androidx.core:core:1.13.1] /home/user/.gradle/caches/transforms-3/54a4cfbaad86b9ab2273ca8263e4a153/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+31
+32    <uses-permission android:name="com.example.bookofsaints.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+32-->[androidx.core:core:1.13.1] /home/user/.gradle/caches/transforms-3/54a4cfbaad86b9ab2273ca8263e4a153/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+32-->[androidx.core:core:1.13.1] /home/user/.gradle/caches/transforms-3/54a4cfbaad86b9ab2273ca8263e4a153/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+33
+34    <application
+35        android:name="android.app.Application"
+35-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:4:9-42
+36        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+36-->[androidx.core:core:1.13.1] /home/user/.gradle/caches/transforms-3/54a4cfbaad86b9ab2273ca8263e4a153/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
+37        android:icon="@mipmap/ic_launcher"
+37-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:5:9-43
+38        android:label="bookofsaints" >
+38-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:3:9-37
+39        <activity
+39-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:6:9-27:20
+40            android:name="com.example.bookofsaints.MainActivity"
+40-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:7:13-41
+41            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+41-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:12:13-163
+42            android:exported="true"
+42-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:8:13-36
+43            android:hardwareAccelerated="true"
+43-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:13:13-47
+44            android:launchMode="singleTop"
+44-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:9:13-43
+45            android:taskAffinity=""
+45-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:10:13-36
+46            android:theme="@style/LaunchTheme"
+46-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:11:13-47
+47            android:windowSoftInputMode="adjustResize" >
+47-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:14:13-55
+48
+49            <!--
+50                 Specifies an Android theme to apply to this Activity as soon as
+51                 the Android process has started. This theme is visible to the user
+52                 while the Flutter UI initializes. After that, this theme continues
+53                 to determine the Window background behind the Flutter UI.
+54            -->
+55            <meta-data
+55-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:19:13-22:17
+56                android:name="io.flutter.embedding.android.NormalTheme"
+56-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:20:15-70
+57                android:resource="@style/NormalTheme" />
+57-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:21:15-52
+58
+59            <intent-filter>
+59-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:23:13-26:29
+60                <action android:name="android.intent.action.MAIN" />
+60-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:24:17-68
+60-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:24:25-66
+61
+62                <category android:name="android.intent.category.LAUNCHER" />
+62-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:25:17-76
+62-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:25:27-74
+63            </intent-filter>
+64        </activity>
+65        <!--
+66             Don't delete the meta-data below.
+67             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+68        -->
+69        <meta-data
+69-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:30:9-32:33
+70            android:name="flutterEmbedding"
+70-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:31:13-44
+71            android:value="2" />
+71-->/home/user/BookofSaintApp/android/app/src/main/AndroidManifest.xml:32:13-30
+72
+73        <activity
+73-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:16:9-20:47
+74            android:name="com.pichillilorenzo.flutter_inappwebview_android.in_app_browser.InAppBrowserActivity"
+74-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:17:13-112
+75            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density"
+75-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:18:13-137
+76            android:exported="false"
+76-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:19:13-37
+77            android:theme="@style/AppTheme" />
+77-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:20:13-44
+78        <activity
+78-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:21:9-24:55
+79            android:name="com.pichillilorenzo.flutter_inappwebview_android.chrome_custom_tabs.ChromeCustomTabsActivity"
+79-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:22:13-120
+80            android:exported="false"
+80-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:23:13-37
+81            android:theme="@style/ThemeTransparent" />
+81-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:24:13-52
+82        <activity
+82-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:25:9-28:55
+83            android:name="com.pichillilorenzo.flutter_inappwebview_android.chrome_custom_tabs.TrustedWebActivity"
+83-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:26:13-114
+84            android:exported="false"
+84-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:27:13-37
+85            android:theme="@style/ThemeTransparent" />
+85-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:28:13-52
+86        <activity
+86-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:29:9-33:55
+87            android:name="com.pichillilorenzo.flutter_inappwebview_android.chrome_custom_tabs.ChromeCustomTabsActivitySingleInstance"
+87-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:30:13-134
+88            android:exported="false"
+88-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:31:13-37
+89            android:launchMode="singleInstance"
+89-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:32:13-48
+90            android:theme="@style/ThemeTransparent" />
+90-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:33:13-52
+91        <activity
+91-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:34:9-38:55
+92            android:name="com.pichillilorenzo.flutter_inappwebview_android.chrome_custom_tabs.TrustedWebActivitySingleInstance"
+92-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:35:13-128
+93            android:exported="false"
+93-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:36:13-37
+94            android:launchMode="singleInstance"
+94-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:37:13-48
+95            android:theme="@style/ThemeTransparent" />
+95-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:38:13-52
+96
+97        <receiver
+97-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:40:9-43:40
+98            android:name="com.pichillilorenzo.flutter_inappwebview_android.chrome_custom_tabs.ActionBroadcastReceiver"
+98-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:41:13-119
+99            android:enabled="true"
+99-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:42:13-35
+100            android:exported="false" />
+100-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:43:13-37
+101
+102        <meta-data
+102-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:45:9-47:36
+103            android:name="io.flutter.embedded_views_preview"
+103-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:46:13-61
+104            android:value="true" />
+104-->[:flutter_inappwebview_android] /home/user/BookofSaintApp/build/flutter_inappwebview_android/intermediates/merged_manifest/release/AndroidManifest.xml:47:13-33
+105
+106        <provider
+106-->[androidx.emoji2:emoji2:1.2.0] /home/user/.gradle/caches/transforms-3/3195b35f0cc2f358e547df28afec7c53/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+107            android:name="androidx.startup.InitializationProvider"
+107-->[androidx.emoji2:emoji2:1.2.0] /home/user/.gradle/caches/transforms-3/3195b35f0cc2f358e547df28afec7c53/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+108            android:authorities="com.example.bookofsaints.androidx-startup"
+108-->[androidx.emoji2:emoji2:1.2.0] /home/user/.gradle/caches/transforms-3/3195b35f0cc2f358e547df28afec7c53/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+109            android:exported="false" >
+109-->[androidx.emoji2:emoji2:1.2.0] /home/user/.gradle/caches/transforms-3/3195b35f0cc2f358e547df28afec7c53/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+110            <meta-data
+110-->[androidx.emoji2:emoji2:1.2.0] /home/user/.gradle/caches/transforms-3/3195b35f0cc2f358e547df28afec7c53/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+111                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+111-->[androidx.emoji2:emoji2:1.2.0] /home/user/.gradle/caches/transforms-3/3195b35f0cc2f358e547df28afec7c53/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+112                android:value="androidx.startup" />
+112-->[androidx.emoji2:emoji2:1.2.0] /home/user/.gradle/caches/transforms-3/3195b35f0cc2f358e547df28afec7c53/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+113            <meta-data
+113-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/user/.gradle/caches/transforms-3/f278e58515e8cfd3d9ddee03ef955ede/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
+114                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+114-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/user/.gradle/caches/transforms-3/f278e58515e8cfd3d9ddee03ef955ede/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
+115                android:value="androidx.startup" />
+115-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/user/.gradle/caches/transforms-3/f278e58515e8cfd3d9ddee03ef955ede/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
+116            <meta-data
+116-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/user/.gradle/caches/transforms-3/6ea3fe485a2777491d24973851e37227/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
+117                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+117-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/user/.gradle/caches/transforms-3/6ea3fe485a2777491d24973851e37227/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
+118                android:value="androidx.startup" />
+118-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/user/.gradle/caches/transforms-3/6ea3fe485a2777491d24973851e37227/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
+119        </provider>
+120
+121        <uses-library
+121-->[androidx.window:window:1.2.0] /home/user/.gradle/caches/transforms-3/ac5ea9a8b6fd31385d98c2d53414b07d/transformed/jetified-window-1.2.0/AndroidManifest.xml:23:9-25:40
+122            android:name="androidx.window.extensions"
+122-->[androidx.window:window:1.2.0] /home/user/.gradle/caches/transforms-3/ac5ea9a8b6fd31385d98c2d53414b07d/transformed/jetified-window-1.2.0/AndroidManifest.xml:24:13-54
+123            android:required="false" />
+123-->[androidx.window:window:1.2.0] /home/user/.gradle/caches/transforms-3/ac5ea9a8b6fd31385d98c2d53414b07d/transformed/jetified-window-1.2.0/AndroidManifest.xml:25:13-37
+124        <uses-library
+124-->[androidx.window:window:1.2.0] /home/user/.gradle/caches/transforms-3/ac5ea9a8b6fd31385d98c2d53414b07d/transformed/jetified-window-1.2.0/AndroidManifest.xml:26:9-28:40
+125            android:name="androidx.window.sidecar"
+125-->[androidx.window:window:1.2.0] /home/user/.gradle/caches/transforms-3/ac5ea9a8b6fd31385d98c2d53414b07d/transformed/jetified-window-1.2.0/AndroidManifest.xml:27:13-51
+126            android:required="false" />
+126-->[androidx.window:window:1.2.0] /home/user/.gradle/caches/transforms-3/ac5ea9a8b6fd31385d98c2d53414b07d/transformed/jetified-window-1.2.0/AndroidManifest.xml:28:13-37
+127
+128        <receiver
+128-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/user/.gradle/caches/transforms-3/6ea3fe485a2777491d24973851e37227/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
+129            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+129-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/user/.gradle/caches/transforms-3/6ea3fe485a2777491d24973851e37227/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
+130            android:directBootAware="false"
+130-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/user/.gradle/caches/transforms-3/6ea3fe485a2777491d24973851e37227/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
+131            android:enabled="true"
+131-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/user/.gradle/caches/transforms-3/6ea3fe485a2777491d24973851e37227/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
+132            android:exported="true"
+132-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/user/.gradle/caches/transforms-3/6ea3fe485a2777491d24973851e37227/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
+133            android:permission="android.permission.DUMP" >
+133-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/user/.gradle/caches/transforms-3/6ea3fe485a2777491d24973851e37227/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
+134            <intent-filter>
+134-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/user/.gradle/caches/transforms-3/6ea3fe485a2777491d24973851e37227/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
+135                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+135-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/user/.gradle/caches/transforms-3/6ea3fe485a2777491d24973851e37227/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
+135-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/user/.gradle/caches/transforms-3/6ea3fe485a2777491d24973851e37227/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
+136            </intent-filter>
+137            <intent-filter>
+137-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/user/.gradle/caches/transforms-3/6ea3fe485a2777491d24973851e37227/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
+138                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+138-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/user/.gradle/caches/transforms-3/6ea3fe485a2777491d24973851e37227/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
+138-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/user/.gradle/caches/transforms-3/6ea3fe485a2777491d24973851e37227/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
+139            </intent-filter>
+140            <intent-filter>
+140-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/user/.gradle/caches/transforms-3/6ea3fe485a2777491d24973851e37227/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
+141                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+141-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/user/.gradle/caches/transforms-3/6ea3fe485a2777491d24973851e37227/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
+141-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/user/.gradle/caches/transforms-3/6ea3fe485a2777491d24973851e37227/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
+142            </intent-filter>
+143            <intent-filter>
+143-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/user/.gradle/caches/transforms-3/6ea3fe485a2777491d24973851e37227/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
+144                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+144-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/user/.gradle/caches/transforms-3/6ea3fe485a2777491d24973851e37227/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
+144-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/user/.gradle/caches/transforms-3/6ea3fe485a2777491d24973851e37227/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
+145            </intent-filter>
+146        </receiver>
+147    </application>
+148
+149</manifest>
