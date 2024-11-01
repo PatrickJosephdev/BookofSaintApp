@@ -3,6 +3,7 @@ import 'package:searchbar_animation/searchbar_animation.dart';
 import 'package:flutter_masonry_view/flutter_masonry_view.dart';
 import 'package:bookofsaints/model/apifetchdata.dart';
 import 'package:bookofsaints/subpage/read.dart';
+import 'package:bookofsaints/subpage/watch.dart';
 
 class SaintList extends StatefulWidget {
   const SaintList({super.key});
@@ -132,7 +133,14 @@ class _SaintListState extends State<SaintList> {
                               height: 5,
                             ),
                             ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => YoutubePlayerPage(saintName: item['name'], videoUrl: item['videoUrl']),
+                    ),
+                  );
+                              },
                               style: ElevatedButton.styleFrom(
                                 foregroundColor: Colors.white,
                                 backgroundColor:

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:bookofsaints/subpage/watch.dart';
 
 class SaintDetailPage extends StatelessWidget {
   final String saintName;
@@ -43,12 +44,12 @@ class SaintDetailPage extends StatelessWidget {
                 onPressed: () {
                   // Handle video playback, e.g., using a video player plugin
                   // Example:
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => VideoPlayerScreen(videoUrl: videoUrl),
-                  //   ),
-                  // );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => YoutubePlayerPage(saintName: saintName, videoUrl: videoUrl),
+                    ),
+                  );
                 },
                 child: const Text('Watch Now'),
               ),
