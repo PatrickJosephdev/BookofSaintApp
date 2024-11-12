@@ -1,6 +1,7 @@
 import 'package:myapp/sub-subpage/aboutus.dart';
 import 'package:myapp/sub-subpage/feedback.dart';
 import 'package:flutter/material.dart';
+import 'package:myapp/subpage/favorite.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -18,7 +19,24 @@ class _SettingsPageState extends State<SettingsPage> {
       ),
       body: ListView(
         children: [
-          
+
+         ListTile(
+            leading: const Icon(Icons.favorite_rounded),
+            title: const Text('Favorite'),
+            onTap: () async{
+             final result = await Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const FavoritePage()),
+                  );
+                  if (result != null) {
+                    // Handle the returned saint name if needed
+                    // You can fetch the saint's details again if needed
+                  }
+
+              // Navigate to notifications settings page
+            },
+          ),
+
           ListTile(
             leading: const Icon(Icons.notifications),
             title: const Text('FeedBack'),

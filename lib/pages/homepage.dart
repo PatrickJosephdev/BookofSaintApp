@@ -25,12 +25,17 @@ class _MyHomePageState extends State<MyHomePage> {
     // Check if data is already saved in Shared Preferences
     String? savedData = prefs.getString('saintList');
 
-    // If data exists, decode it and set it to saintList
-    setState(() {
-      saintList = jsonDecode(savedData!);
-      _isLoading = false;
-    });
+    if (savedData != null) {
+      // If data exists, decode it and set it to saintList
+      setState(() {
+        saintList = jsonDecode(savedData);
+        _isLoading = false;
+      });
+    } else {
+      // If no data, fetch from API
+      await _fetchDataAndSave(prefs);
     }
+  }
 
   Future<void> _fetchDataAndSave(SharedPreferences prefs) async {
     try {

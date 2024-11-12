@@ -30,13 +30,18 @@ class _SaintListState extends State<SaintList> {
       // Check if data is already saved in Shared Preferences
       String? savedData = prefs.getString('saintList');
 
-      // If data exists, decode it and set it to _items and _filteredItems
-      setState(() {
-        _items = jsonDecode(savedData!);
-        _filteredItems = _items; // Initialize filtered items
-        _isLoading = false;
-      });
-        }
+      if (savedData != null) {
+        // If data exists, decode it and set it to _items and _filteredItems
+        setState(() {
+          _items = jsonDecode(savedData);
+          _filteredItems = _items; // Initialize filtered items
+          _isLoading = false;
+        });
+      } else {
+        // If no data, fetch from API
+        await _fetchAndSaveData(prefs);
+      }
+    }
   }
 
   Future<void> _fetchAndSaveData(SharedPreferences prefs) async {
