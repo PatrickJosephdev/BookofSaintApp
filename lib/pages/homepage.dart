@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/model/fetchdailymass.dart';
+import 'package:myapp/subpage/read.dart';
+import 'package:myapp/widgets/dailymasswidget.dart';
+import 'package:myapp/widgets/messagewidget.dart';
 import 'package:myapp/widgets/saintcardwidget.dart';
 import 'package:myapp/widgets/recommendedwidget.dart';
 import 'package:myapp/model/apifetchdata.dart';
@@ -15,9 +19,29 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   List<dynamic> saintList = [];
+  List<dynamic> massList = [];
   bool _isLoading = true;
   String _error = '';
   Timer? _timer; // Timer to refresh data
+
+  Future<void> _fetchMassData() async {
+    try {
+      final massDataList = await massData(
+          "https://patrickjosephdev.github.io/Book_of_Saints/dailymass.json");
+      setState(() {
+        massList = massDataList;
+        _isLoading = false;
+        print(massList[0]['imageUrl']);
+      });
+    } catch (error) {
+      setState(() {
+        _error = 'Error: $error';
+        _isLoading = false;
+      });
+    }
+  }
+
+// code for saint loaddata
 
   Future<void> loadData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -36,6 +60,8 @@ class _MyHomePageState extends State<MyHomePage> {
       await _fetchDataAndSave(prefs);
     }
   }
+
+// code for saint fetch and save
 
   Future<void> _fetchDataAndSave(SharedPreferences prefs) async {
     try {
@@ -66,7 +92,10 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     loadData();
-    startTimer(); // Start the timer when the widget is initialized
+    startTimer();
+    _fetchMassData();
+
+    // Start the timer when the widget is initialized
   }
 
   @override
@@ -97,7 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ? const Center(
                 child: CircularProgressIndicator(),
               )
-            : _error.isNotEmpty
+            : _error.isNotEmpty && massList.isNotEmpty
                 ? Center(
                     child: Text(_error),
                   )
@@ -135,13 +164,60 @@ class _MyHomePageState extends State<MyHomePage> {
                                       saintName: saint['name'],
                                       celebrationDate: saint['celebrationDate'],
                                       imageUrl: saint['imageUrl'],
-                                      onReadNow: () {});
+                                      onReadNow: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                SaintDetailPage(
+                                                    saintName: saint['name'],
+                                                    saintImage:
+                                                        saint['imageUrl'],
+                                                    saintStory: saint['story'],
+                                                    videoUrl:
+                                                        saint['videoUrl']),
+                                          ),
+                                        );
+                                      });
                                 },
                               ),
                             ),
                             const SizedBox(
-                              height: 100,
+                              height: 20,
                             ),
+                            const Text(
+                              'Daily Mass',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            if (massList.isNotEmpty)
+                              DailyMassWidget(
+                                imageUrl: massList[0]['imageUrl'] ??
+                                    '', // Provide a fallback if null
+                                videoUrl: massList[0]['videoUrl'] ??
+                                    '', // Provide a fallback if null
+                              )
+                            else
+                              const Text(
+                                  'No Daily Mass Data Available'), // Handle empty massList case
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            const Text(
+                              'Daily Message',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            Message(
+                                imageUrl:
+                                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdkWG1uf8y2w19gfBUAEt50XXZhz5u_0wMKw&s',
+                                videoUrl:
+                                    'https://www.youtube.com/watch?v=CI3nUSmXAOE',
+                                title: 'Message'),
                           ]),
                     ),
                   ),

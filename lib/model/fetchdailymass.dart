@@ -1,13 +1,12 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-Future<List<dynamic>> fetchData() async {
+Future<List<dynamic>> massData( String URL) async {
   try {
     final response = await http.get(Uri.parse(
-        "https://patrickjosephdev.github.io/Book_of_Saints/saints.json"
-        
+        URL
         ));
-
+    print(response);
     if (response.statusCode == 200) {
       return jsonDecode(response.body);
     } else {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:myapp/subpage/favorite.dart'; // Import the FavoritePage
+// Import the FavoritePage
 import 'package:myapp/subpage/watch.dart'; // Import your YoutubePlayerPage
 
 class SaintDetailPage extends StatefulWidget {

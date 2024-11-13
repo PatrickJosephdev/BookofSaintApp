@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/subpage/read.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:myapp/pages/saintlist.dart'; // Import the SaintDetailPage
+// Import the SaintDetailPage
 
 class FavoritePage extends StatefulWidget {
+  const FavoritePage({super.key});
+
   @override
   _FavoritePageState createState() => _FavoritePageState();
 }
