@@ -20,9 +20,26 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   List<dynamic> saintList = [];
   List<dynamic> massList = [];
+  List<dynamic> dailymessageList = [];
   bool _isLoading = true;
   String _error = '';
   Timer? _timer; // Timer to refresh data
+
+  Future<void> _fetchMessageData() async {
+    try {
+      final messageList = await massData(
+          "https://patrickjosephdev.github.io/Book_of_Saints/dailymessage.json");
+      setState(() {
+        dailymessageList = messageList;
+        _isLoading = false;
+      });
+    } catch (error) {
+      setState(() {
+        _error = 'Error: $error';
+        _isLoading = false;
+      });
+    }
+  }
 
   Future<void> _fetchMassData() async {
     try {
@@ -94,6 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
     loadData();
     startTimer();
     _fetchMassData();
+    _fetchMessageData();
 
     // Start the timer when the widget is initialized
   }
@@ -212,12 +230,30 @@ class _MyHomePageState extends State<MyHomePage> {
                             const SizedBox(
                               height: 20,
                             ),
-                            Message(
-                                imageUrl:
-                                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdkWG1uf8y2w19gfBUAEt50XXZhz5u_0wMKw&s',
-                                videoUrl:
-                                    'https://www.youtube.com/watch?v=CI3nUSmXAOE',
-                                title: 'Message'),
+                            SizedBox(
+                              height: 200,
+                              child: ListView.builder(
+                                itemCount: dailymessageList.length,
+                                scrollDirection: Axis.horizontal,
+                                itemBuilder: (context, index) {
+                                  final message = dailymessageList[index];
+                                  if (dailymessageList.isNotEmpty) {
+                                    return Message(
+                                        imageUrl: message['imageUrl'],
+                                        videoUrl: message['videoUrl'],
+                                        title: message['title']);
+                                  } else {
+                                    return const Text(
+                                        'No Daily Message Data Available');
+                                  }
+                                  ;
+                                },
+                              ),
+                            ),
+
+                            const SizedBox(
+                              height: 100,
+                            ),
                           ]),
                     ),
                   ),
