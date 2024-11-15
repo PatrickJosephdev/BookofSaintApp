@@ -42,38 +42,40 @@ class _YoutubePlayerPageState extends State<YoutubePlayerPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: YoutubePlayerBuilder(
-        player: YoutubePlayer(
-          controller: _controller,
-          showVideoProgressIndicator: true,
-          progressIndicatorColor: Colors.amber,
-          progressColors: const ProgressBarColors(
-            playedColor: Colors.amber,
-            handleColor: Colors.amberAccent,
+      body: Center(
+        child: YoutubePlayerBuilder(
+          player: YoutubePlayer(
+            controller: _controller,
+            showVideoProgressIndicator: true,
+            progressIndicatorColor: Colors.amber,
+            progressColors: const ProgressBarColors(
+              playedColor: Colors.amber,
+              handleColor: Colors.amberAccent,
+            ),
+            onReady: () {
+              // Optional: Add a listener if you want to listen for player events
+              _controller.addListener(() {
+                // Example: Print the player state
+                if (_controller.value.isPlaying) {
+                  print("Video is playing");
+                }
+              });
+            },
           ),
-          onReady: () {
-            // Optional: Add a listener if you want to listen for player events
-            _controller.addListener(() {
-              // Example: Print the player state
-              if (_controller.value.isPlaying) {
-                print("Video is playing");
-              }
-            });
+          builder: (context, player) {
+            return Center(
+              child: Column(
+                children: [
+                  // Add any other widgets you want above the player
+                  Text("Now Playing: ${widget.saintName}"),
+                  const SizedBox(height: 20),
+                  player, // This is where the player is rendered
+                  // Add any other widgets you want below the player
+                ],
+              ),
+            );
           },
         ),
-        builder: (context, player) {
-          return Center(
-            child: Column(
-              children: [
-                // Add any other widgets you want above the player
-                Text("Now Playing: ${widget.saintName}"),
-                const SizedBox(height: 20),
-                player, // This is where the player is rendered
-                // Add any other widgets you want below the player
-              ],
-            ),
-          );
-        },
       ),
     );
   }

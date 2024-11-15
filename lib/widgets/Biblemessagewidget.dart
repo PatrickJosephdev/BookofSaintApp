@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:myapp/subpage/watch.dart';
 
 class DailyMessage extends StatelessWidget {
   final String imageUrl;
@@ -37,7 +37,12 @@ class DailyMessage extends StatelessWidget {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => YoutubePlayerPage(videoUrl: videoUrl, saintName: '',),
+                    ),
+                  );
                 },
                 child: const Text('Watch Now'),
               ),

@@ -25,6 +25,9 @@ class _PageControlState extends State<PageControl> {
 
   @override
   Widget build(BuildContext context) {
+    // Check if the current theme is dark or light
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       body: _buildPage(), // Based on the selected tab
       extendBody: true, // This makes the body extend to include the navbar
@@ -32,23 +35,30 @@ class _PageControlState extends State<PageControl> {
         currentIndex: _SelectedTab.values.indexOf(_selectedTab),
         onTap: _handleIndexChanged,
         margin: const EdgeInsets.all(2),
-        indicatorColor: Colors.black,
-        backgroundColor: Colors.white.withOpacity(0.000001),
+        indicatorColor:
+            isDarkMode ? Colors.white : Colors.black, // Change indicator color
+        backgroundColor: isDarkMode
+            ? Colors.black.withOpacity(0.00000001)
+            : Colors.white.withOpacity(0.0000001), // Change background color
         items: [
           CrystalNavigationBarItem(
             icon: Icons.home,
-            selectedColor: Colors.black,
-            unselectedColor: Colors.black54,
+            selectedColor: isDarkMode
+                ? Colors.white
+                : Colors.black, // Change selected color
+            unselectedColor: isDarkMode
+                ? Colors.white54
+                : Colors.black54, // Change unselected color
           ),
           CrystalNavigationBarItem(
             icon: Icons.list,
-            selectedColor: Colors.black,
-            unselectedColor: Colors.black54,
+            selectedColor: isDarkMode ? Colors.white : Colors.black,
+            unselectedColor: isDarkMode ? Colors.white54 : Colors.black54,
           ),
           CrystalNavigationBarItem(
             icon: Icons.settings,
-            selectedColor: Colors.black,
-            unselectedColor: Colors.black54,
+            selectedColor: isDarkMode ? Colors.white : Colors.black,
+            unselectedColor: isDarkMode ? Colors.white54 : Colors.black54,
           ),
         ],
       ),

@@ -53,11 +53,31 @@ class _FavoritePageState extends State<FavoritePage> {
                     String? videoUrl = prefs.getString('${saintName}_video');
 
                     return ListTile(
-                      title: Text(saintName),
-                      subtitle: Text(saintStory ?? 'No story available'),
-                      leading: saintImage != null ? Image.network(saintImage) : null,
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 16.0, vertical: 8.0), // Padding
+                      tileColor: Colors.grey[200], // Light grey background
+                      leading: saintImage != null
+                          ? Container(
+                              height: 50.0, // Fixed height for image
+                              width: 50.0, // Fixed width for image
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(
+                                    8.0), // Rounded corners (optional)
+                                child: Image.network(saintImage),
+                              ),
+                            )
+                          : null,
+                      title: Text(
+                        saintName,
+                        overflow: TextOverflow.ellipsis, // Truncate with "..."
+                      ),
+                      subtitle: Text(
+                        saintStory ?? 'No story available',
+                        overflow: TextOverflow.ellipsis, // Truncate with "..."
+                        maxLines: 1, // Limit to one line
+                      ),
                       onTap: () {
-                        // Navigate to the SaintDetailPage with the selected saint's details
+                        // Navigate to SaintDetailPage
                         Navigator.push(
                           context,
                           MaterialPageRoute(

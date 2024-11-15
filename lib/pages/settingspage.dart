@@ -2,6 +2,9 @@ import 'package:myapp/sub-subpage/aboutus.dart';
 import 'package:myapp/sub-subpage/feedback.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/subpage/favorite.dart';
+import 'package:myapp/themes/themedatastyle.dart';
+import 'package:myapp/themes/themeprovider.dart';
+import 'package:provider/provider.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -11,8 +14,11 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+  
     return Scaffold(
       appBar: AppBar(
         title: const Text('Settings'),
@@ -72,10 +78,10 @@ class _SettingsPageState extends State<SettingsPage> {
             leading: const Icon(Icons.dark_mode),
             title: const Text('Dark Mode'),
             trailing: Switch(
-              value: true,
-              onChanged: (value) {
-                // Toggle dark mode
-              },
+             value: themeProvider.themeDataStyle == ThemeDataStyle.dark,
+          onChanged: (value) {
+            themeProvider.changeTheme();
+          },
             ),
           ),
         ],

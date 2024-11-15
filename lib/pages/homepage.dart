@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:myapp/model/fetchdailymass.dart';
 import 'package:myapp/subpage/read.dart';
 import 'package:myapp/widgets/dailymasswidget.dart';
@@ -122,8 +123,46 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose();
   }
 
+  List<String> getSaintsForToday() {
+    List<String> todaySaints = [];
+    String todayDate =
+        DateTime.now().toString().substring(5, 10); // MM-DD format
+
+    for (var saint in saintList) {
+      // Check if celebrationDate is not null and has the expected length
+      if (saint['celebrationDate'] != null &&
+          saint['celebrationDate'].length >= 10) {
+        String celebrationDate = saint['celebrationDate'];
+        if (celebrationDate.substring(5, 10) == todayDate) {
+          todaySaints.add(saint['name']);
+        }
+      } else {
+        // Handle the case where celebrationDate is invalid
+        print('Invalid celebrationDate for saint: ${saint['name']}');
+      }
+    }
+    return todaySaints;
+  }
+
+  String formatSaintNames(List<String> saints) {
+    if (saints.isEmpty) return '';
+
+    if (saints.length == 1) {
+      return saints[0];
+    } else if (saints.length == 2) {
+      return '${saints[0]} & ${saints[1]}';
+    } else {
+      String allButLast = saints.sublist(0, saints.length - 1).join(', ');
+      String last = saints.last;
+      return '$allButLast & $last';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    DateTime now = DateTime.now();
+    String formattedDate = DateFormat('EEEE, MMMM d, y').format(now);
+
     if (saintList.isEmpty) {
       return const Scaffold(
         body: Center(
@@ -155,10 +194,95 @@ class _MyHomePageState extends State<MyHomePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SaintCard(
-                                saintName: saintList[0]['name'],
-                                celebrationDate: "$day - $month",
-                                imageUrl: saintList[0]['imageUrl'],
-                                onReadNow: () {}),
+                              saintName: formatSaintNames(getSaintsForToday()),
+                              celebrationDate: formattedDate,
+                              imageUrl: saintList[0]['imageUrl'],
+                              onReadNow: () {
+                                List<String> todaySaints = getSaintsForToday();
+
+                                if (todaySaints.length > 1) {
+                                  // Show a dialog with the list of saints
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: const Text("Select a Saint"),
+                                        content: SizedBox(
+                                          width: double
+                                              .maxFinite, // Make the dialog wide enough
+                                          child: ListView.builder(
+                                            itemCount: todaySaints.length,
+                                            itemBuilder: (context, index) {
+                                              return ListTile(
+                                                title: Text(todaySaints[index]),
+                                                onTap: () {
+                                                  // Find the selected saint's details
+                                                  var selectedSaint =
+                                                      saintList.firstWhere(
+                                                    (s) =>
+                                                        s['name'] ==
+                                                        todaySaints[index],
+                                                  );
+                                                  print(
+                                                      "Selected Saint: ${selectedSaint['name']}");
+
+                                                  // Navigate to the SaintDetailPage with the selected saint's details
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          SaintDetailPage(
+                                                        saintName:
+                                                            selectedSaint[
+                                                                'name'],
+                                                        saintImage:
+                                                            selectedSaint[
+                                                                'imageUrl'],
+                                                        saintStory:
+                                                            selectedSaint[
+                                                                'story'],
+                                                        videoUrl: selectedSaint[
+                                                            'videoUrl'],
+                                                      ),
+                                                    ),
+                                                  );
+
+                                                  // Close the dialog
+                                                },
+                                              );
+                                            },
+                                          ),
+                                        ),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context)
+                                                  .pop(); // Close the dialog
+                                            },
+                                            child: const Text("Cancel"),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                } else if (todaySaints.isNotEmpty) {
+                                  // If there's only one saint, navigate directly to the detail page
+                                  var firstSaint = saintList.firstWhere(
+                                      (s) => s['name'] == todaySaints[0]);
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => SaintDetailPage(
+                                        saintName: firstSaint['name'],
+                                        saintImage: firstSaint['imageUrl'],
+                                        saintStory: firstSaint['story'],
+                                        videoUrl: firstSaint['videoUrl'],
+                                      ),
+                                    ),
+                                  );
+                                }
+                              },
+                            ),
                             const SizedBox(
                               height: 20,
                             ),
@@ -178,9 +302,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                 scrollDirection: Axis.horizontal,
                                 itemBuilder: (context, index) {
                                   final saint = saintList[index];
+                                  DateTime parseDate = DateTime.parse(saint['celebrationDate']);
+                                  String saintDate = DateFormat('MMMM d')
+                                      .format(parseDate);
                                   return Recommended(
                                       saintName: saint['name'],
-                                      celebrationDate: saint['celebrationDate'],
+                                      celebrationDate: saintDate,
                                       imageUrl: saint['imageUrl'],
                                       onReadNow: () {
                                         Navigator.push(
@@ -246,7 +373,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                     return const Text(
                                         'No Daily Message Data Available');
                                   }
-                                  ;
                                 },
                               ),
                             ),

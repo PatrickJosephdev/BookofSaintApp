@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:myapp/subpage/watch.dart';
 
 class Message extends StatelessWidget {
   final String imageUrl;
@@ -7,11 +7,11 @@ class Message extends StatelessWidget {
   final String title;
 
   const Message({
-    Key? key,
+    super.key,
     required this.imageUrl,
     required this.videoUrl,
     required this.title,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -55,9 +55,14 @@ class Message extends StatelessWidget {
               right: 30,
               child: ElevatedButton(
                 onPressed: () {
-                  
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => YoutubePlayerPage(videoUrl: videoUrl, saintName: title,),
+                    ),
+                  );
                 },
-                child: Text('Watch Now'),
+                child: const Text('Watch Now'),
               ),
             ),
           ],

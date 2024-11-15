@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/subpage/watch.dart'; // Ensure this import is correct
-import 'package:url_launcher/url_launcher.dart';
 import 'package:intl/intl.dart'; // Import this package for date formatting
 
 class DailyMassWidget extends StatelessWidget {
