@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/pages/pagecontrol.dart';
 import 'package:myapp/themes/themeprovider.dart';
+import 'package:myapp/welcome.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: Provider.of<ThemeProvider>(context).themeDataStyle,
-      home: const PageControl(),
+      home:  WelcomePage(),
     );
   }
 }

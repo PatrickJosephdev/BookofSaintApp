@@ -1,7 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:myapp/model/fetchdailymass.dart';
-
 import 'package:myapp/subpage/read.dart';
 import 'package:myapp/widgets/dailymasswidget.dart';
 import 'package:myapp/widgets/messagewidget.dart';
@@ -160,10 +161,27 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  List<dynamic> getRandomSaints(int count) {
+    if (saintList.length <= count) {
+      return List.from(saintList); // Return all saints if less than count
+    }
+
+    final random = Random();
+    final selectedSaints = <dynamic>{}; // Use a Set to avoid duplicates
+
+    while (selectedSaints.length < count) {
+      int randomIndex = random.nextInt(saintList.length);
+      selectedSaints.add(saintList[randomIndex]);
+    }
+
+    return selectedSaints.toList(); // Convert Set back to List
+  }
+
   @override
   Widget build(BuildContext context) {
     DateTime now = DateTime.now();
     String formattedDate = DateFormat('EEEE, MMMM d, y').format(now);
+    final randomSaints = getRandomSaints(10); 
 
     if (saintList.isEmpty) {
       return const Scaffold(
@@ -295,15 +313,15 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
                             ),
                             const SizedBox(
-                              height: 20,
+                              height: 5,
                             ),
                             SizedBox(
                               height: 150,
                               child: ListView.builder(
-                                itemCount: saintList.length,
+                                itemCount: randomSaints.length,
                                 scrollDirection: Axis.horizontal,
                                 itemBuilder: (context, index) {
-                                  final saint = saintList[index];
+                                  final saint = randomSaints[index];
                                   DateTime parseDate = DateTime.parse(saint['celebrationDate']);
                                   String saintDate = DateFormat('MMMM d')
                                       .format(parseDate);
@@ -337,7 +355,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               style: TextStyle(fontSize: 20),
                             ),
                             const SizedBox(
-                              height: 20,
+                              height: 10,
                             ),
                             if (massList.isNotEmpty)
                               DailyMassWidget(
@@ -357,7 +375,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               style: TextStyle(fontSize: 20),
                             ),
                             const SizedBox(
-                              height: 20,
+                              height: 10,
                             ),
                             SizedBox(
                               height: 200,
