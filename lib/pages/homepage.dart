@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:myapp/model/fetchdailymass.dart';
+
 import 'package:myapp/subpage/read.dart';
 import 'package:myapp/widgets/dailymasswidget.dart';
 import 'package:myapp/widgets/messagewidget.dart';
@@ -113,6 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
     startTimer();
     _fetchMassData();
     _fetchMessageData();
+   
 
     // Start the timer when the widget is initialized
   }

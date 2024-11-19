@@ -66,9 +66,12 @@ class DailyMassWidget extends StatelessWidget {
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
+                          
                           borderRadius:
                               BorderRadius.circular(30.0), // Rounded edges
                         ),
+                        foregroundColor: Colors.white,
+                        backgroundColor: Colors.black.withOpacity(0.3),
                         padding: const EdgeInsets.symmetric(
                             vertical: 15, horizontal: 30), // Button padding
                       ),

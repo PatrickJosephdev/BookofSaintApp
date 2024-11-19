@@ -3,7 +3,6 @@ import 'package:myapp/pages/pagecontrol.dart';
 import 'package:myapp/themes/themeprovider.dart';
 import 'package:provider/provider.dart';
 
-
 void main() {
   runApp(ChangeNotifierProvider(
       create: (context) => ThemeProvider(),

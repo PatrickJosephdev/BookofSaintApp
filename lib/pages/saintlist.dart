@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:searchbar_animation/searchbar_animation.dart';
 import 'package:flutter_masonry_view/flutter_masonry_view.dart';
 import 'package:myapp/model/apifetchdata.dart';
@@ -67,14 +68,13 @@ class _SaintListState extends State<SaintList> {
   void initState() {
     super.initState();
     loadData();
+    
   }
 
   TextEditingController textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    print(_items);
-
     if (_items.isEmpty) {
       return const Scaffold(
         body: Center(
@@ -82,7 +82,6 @@ class _SaintListState extends State<SaintList> {
         ),
       );
     } else {
-      print(_items);
       return Scaffold(
           appBar: AppBar(
             title: const Text('Saint List'),
@@ -93,7 +92,10 @@ class _SaintListState extends State<SaintList> {
                 isOriginalAnimation: true,
                 trailingWidget: const Icon(Icons.search),
                 secondaryButtonWidget: const Icon(Icons.cancel),
-                buttonWidget: const Icon(Icons.search),
+                buttonWidget: const Icon(
+                  Icons.search,
+                  color: Colors.black,
+                ),
                 hintText: "Search Here",
                 onChanged: (value) {
                   // Handle search text change
@@ -124,81 +126,88 @@ class _SaintListState extends State<SaintList> {
                 itemBuilder: (item) {
                   return ClipRRect(
                     borderRadius: BorderRadius.circular(10.0),
-                    child: Stack(alignment: Alignment.center, children: [
-                      Image.network(item['imageUrl'], fit: BoxFit.cover),
-                      Positioned(
-                          top: 20,
-                          left: 0,
-                          right: 0,
-                          child: Center(
-                            child: Text(
-                              item['name'],
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(color: Colors.white),
-                            ),
-                          )),
-                      Positioned(
-                          bottom: 10,
-                          left: 0,
-                          right: 0,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => SaintDetailPage(
-                                        saintName: item['name'],
-                                        saintImage: item['imageUrl'],
-                                        saintStory: item['story'],
-                                        videoUrl: item['videoUrl'],
-                                      ),
+                    child: Stack(
+                        fit: StackFit.passthrough,
+                        alignment: Alignment.center,
+                        children: [
+                          Image.network(
+                            item['imageUrl'],
+                            fit: BoxFit.cover,
+                          ),
+                          Positioned(
+                              top: 20,
+                              left: 0,
+                              right: 0,
+                              child: Center(
+                                child: Text(
+                                  item['name'],
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(color: Colors.white),
+                                ),
+                              )),
+                          Positioned(
+                              bottom: 10,
+                              left: 0,
+                              right: 0,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => SaintDetailPage(
+                                            saintName: item['name'],
+                                            saintImage: item['imageUrl'],
+                                            saintStory: item['story'],
+                                            videoUrl: item['videoUrl'],
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      foregroundColor: Colors.white,
+                                      backgroundColor: Colors.black
+                                          .withOpacity(0.3), // Text color
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 10),
                                     ),
-                                  );
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  foregroundColor: Colors.white,
-                                  backgroundColor: Colors.black
-                                      .withOpacity(0.3), // Text color
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 10),
-                                ),
-                                child: const Text(
-                                  "Read Now",
-                                  style: TextStyle(fontSize: 9),
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => YoutubePlayerPage(
-                                          saintName: item['name'],
-                                          videoUrl: item['videoUrl']),
+                                    child: const Text(
+                                      "Read Now",
+                                      style: TextStyle(fontSize: 9),
                                     ),
-                                  );
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  foregroundColor: Colors.white,
-                                  backgroundColor: Colors.black
-                                      .withOpacity(0.3), // Text color
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 10),
-                                ),
-                                child: const Text(
-                                  "Play Now",
-                                  style: TextStyle(fontSize: 9),
-                                ),
-                              ),
-                            ],
-                          )),
-                    ]),
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              YoutubePlayerPage(
+                                                  saintName: item['name'],
+                                                  videoUrl: item['videoUrl']),
+                                        ),
+                                      );
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      foregroundColor: Colors.white,
+                                      backgroundColor: Colors.black
+                                          .withOpacity(0.3), // Text color
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 10),
+                                    ),
+                                    child: const Text(
+                                      "Play Now",
+                                      style: TextStyle(fontSize: 9),
+                                    ),
+                                  ),
+                                ],
+                              )),
+                        ]),
                   );
                 },
               ),

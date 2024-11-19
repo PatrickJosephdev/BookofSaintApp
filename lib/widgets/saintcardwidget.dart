@@ -61,15 +61,19 @@ class SaintCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 15,
                 ),
                 Text(
                   saintName,
-                  style: const TextStyle(
-                    fontSize: 24,
+                  style:  TextStyle(
+                    fontSize: MediaQuery.of(context).size.width * 0.05,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
+                      
                   ),
+                  maxLines: 5,
+                  overflow: TextOverflow.fade,
+                  
                 ),
                 const SizedBox(height: 8),
                 Text(

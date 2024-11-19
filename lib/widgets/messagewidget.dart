@@ -17,7 +17,7 @@ class Message extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 200,
-      height:200,
+      height: 200,
       // Set a fixed width for each item
       margin: const EdgeInsets.only(right: 10),
       child: Card(
@@ -54,11 +54,23 @@ class Message extends StatelessWidget {
               left: 30,
               right: 30,
               child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: const Color.fromARGB(255, 245, 241, 241),
+                  backgroundColor:
+                      const Color.fromARGB(255, 2, 2, 2).withOpacity(0.3),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 16, vertical: 8), // Adjusted padding
+                  textStyle:
+                      const TextStyle(fontSize: 12), // Adjusted font size
+                ),
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => YoutubePlayerPage(videoUrl: videoUrl, saintName: title,),
+                      builder: (context) => YoutubePlayerPage(
+                        videoUrl: videoUrl,
+                        saintName: title,
+                      ),
                     ),
                   );
                 },
@@ -70,6 +82,4 @@ class Message extends StatelessWidget {
       ),
     );
   }
-
-  
 }

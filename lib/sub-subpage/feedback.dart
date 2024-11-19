@@ -36,7 +36,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
       appBar: AppBar(
         title: const Text('Feedback'),
       ),
-      body: Padding(
+      body: SingleChildScrollView( // Make the body scrollable
         padding: const EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
@@ -90,9 +90,19 @@ class _FeedbackPageState extends State<FeedbackPage> {
                 },
               ),
               const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: _sendFeedback,
-                child: const Text('Send Feedback'),
+              Center(
+                child: ElevatedButton(
+                  onPressed: _sendFeedback,
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white, 
+                    backgroundColor: const Color.fromARGB(255, 24, 25, 26), // Text color
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15), // Button padding
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10), // Button border radius
+                    ),
+                  ),
+                  child: const Text('Send Feedback'),
+                ),
               ),
             ],
           ),

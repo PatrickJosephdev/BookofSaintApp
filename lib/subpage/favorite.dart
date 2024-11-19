@@ -55,9 +55,9 @@ class _FavoritePageState extends State<FavoritePage> {
                     return ListTile(
                       contentPadding: const EdgeInsets.symmetric(
                           horizontal: 16.0, vertical: 8.0), // Padding
-                      tileColor: Colors.grey[200], // Light grey background
+                       // Light grey background
                       leading: saintImage != null
-                          ? Container(
+                          ? SizedBox(
                               height: 50.0, // Fixed height for image
                               width: 50.0, // Fixed width for image
                               child: ClipRRect(

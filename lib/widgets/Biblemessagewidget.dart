@@ -33,9 +33,21 @@ class DailyMessage extends StatelessWidget {
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis
               ),
               const SizedBox(height: 20),
               ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                        foregroundColor:
+                            const Color.fromARGB(255, 245, 241, 241),
+                        backgroundColor:
+                            const Color.fromARGB(255, 2, 2, 2).withOpacity(0.8),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 8), // Adjusted padding
+                        textStyle:
+                            const TextStyle(fontSize: 12), // Adjusted font size
+                      ),
                 onPressed: () {
                   Navigator.push(
                     context,

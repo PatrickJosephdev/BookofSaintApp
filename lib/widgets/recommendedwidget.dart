@@ -51,14 +51,17 @@ class Recommended extends StatelessWidget {
                 children: [
                   Expanded(
                     // Expanded to allow text to take available space
-                    child: Text(
-                      saintName,
-                      style: const TextStyle(
-                          fontSize: 20,
-                          color: Colors.white,
-                          overflow: TextOverflow.ellipsis // Handle overflow
-                          ),
-                      maxLines: 2, // Limit lines if needed
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        saintName,
+                        style: const TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            overflow: TextOverflow.ellipsis // Handle overflow
+                            ),
+                        maxLines: 2, // Limit lines if needed
+                      ),
                     ),
                   ),
                   Text(
